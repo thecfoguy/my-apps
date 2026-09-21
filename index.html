@@ -38,29 +38,22 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html,
-    body {
+    html {
       margin: 0;
       padding: 0;
       width: 100%;
       min-height: 100%;
       background: #02070d;
-      color: white;
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
     }
 
     body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
       min-height: 100vh;
-      min-height: 100dvh;
-      overflow-x: hidden;
-    }
-
-    button,
-    a {
-      font: inherit;
+      background: #02070d;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     a {
@@ -68,83 +61,77 @@
       text-decoration: none;
     }
 
-    .app-shell {
+    .screen {
       position: relative;
       width: 100%;
       min-height: 100vh;
-      min-height: 100dvh;
       overflow: hidden;
+
       background:
         radial-gradient(
-          circle at 15% 12%,
-          rgba(0, 119, 255, 0.35),
-          transparent 22%
+          circle at 5% 15%,
+          rgba(0, 105, 255, 0.30),
+          transparent 26%
         ),
         radial-gradient(
-          circle at 85% 86%,
-          rgba(0, 99, 255, 0.18),
+          circle at 90% 85%,
+          rgba(0, 100, 255, 0.14),
           transparent 28%
         ),
         linear-gradient(
           160deg,
-          #061426 0%,
-          #02070d 48%,
+          #07192e 0%,
+          #020a13 48%,
           #000000 100%
         );
     }
 
-    .dots {
+    .dot-field {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 135px;
+      height: 100%;
+      opacity: 0.60;
       pointer-events: none;
-      opacity: 0.7;
 
       background-image:
         radial-gradient(
           circle,
-          rgba(0, 126, 255, 0.8) 1.3px,
-          transparent 1.7px
+          #087dff 1.5px,
+          transparent 2px
         );
 
       background-size: 14px 14px;
-
-      mask-image:
-        linear-gradient(
-          90deg,
-          black 0%,
-          transparent 42%,
-          transparent 100%
-        );
-
-      -webkit-mask-image:
-        linear-gradient(
-          90deg,
-          black 0%,
-          transparent 42%,
-          transparent 100%
-        );
     }
 
-    .glow {
+    .fade {
       position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(0, 102, 255, 0.15);
-      filter: blur(70px);
-      top: 60px;
-      left: -100px;
+      top: 0;
+      left: 70px;
+      width: 170px;
+      height: 100%;
       pointer-events: none;
+
+      background:
+        linear-gradient(
+          to right,
+          rgba(2, 7, 13, 0),
+          rgba(2, 7, 13, 1)
+        );
     }
 
-    .content {
+    .container {
       position: relative;
-      z-index: 2;
-      width: min(92%, 520px);
+      z-index: 5;
+      width: 90%;
+      max-width: 520px;
       margin: 0 auto;
-      padding:
-        calc(42px + env(safe-area-inset-top))
-        0
+
+      padding-top:
+        calc(48px + env(safe-area-inset-top));
+
+      padding-bottom:
         calc(40px + env(safe-area-inset-bottom));
     }
 
@@ -154,138 +141,103 @@
 
     .title {
       margin: 0;
-      font-size: clamp(38px, 10vw, 52px);
+
+      font-size: 44px;
       line-height: 1;
+
       font-weight: 800;
-      letter-spacing: -1.8px;
+      letter-spacing: -1.5px;
     }
 
     .subtitle {
       margin: 10px 0 0;
-      color: #b7c0cd;
+
+      color: #c2c8d0;
+
       font-size: 16px;
-      letter-spacing: 0.1px;
+      line-height: 1.3;
     }
 
-    .apps {
+    .cards {
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
-    .app-card {
+    .card {
       position: relative;
-      display: grid;
-      grid-template-columns: 74px 1fr 34px;
+
+      display: flex;
       align-items: center;
-      gap: 14px;
+
       width: 100%;
       min-height: 112px;
-      padding: 16px 17px;
+
+      padding: 16px;
+
       border-radius: 24px;
+
       overflow: hidden;
-      transform: translateZ(0);
+
       transition:
         transform 0.12s ease,
         filter 0.12s ease;
     }
 
-    .app-card:active {
+    .card:active {
       transform: scale(0.975);
       filter: brightness(1.15);
     }
 
-    .app-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          110deg,
-          rgba(255,255,255,0.13),
-          rgba(255,255,255,0.015) 40%,
-          rgba(255,255,255,0.05)
-        );
-    }
-
-    .app-card::after {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: 23px;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.04),
-          transparent 60%
-        );
-    }
-
     .alo-card {
-      border: 1.5px solid #ff453a;
+      border: 2px solid #ff4238;
+
       background:
-        radial-gradient(
-          circle at 12% 50%,
-          rgba(255, 45, 45, 0.38),
-          transparent 35%
-        ),
         linear-gradient(
           100deg,
-          rgba(81, 8, 13, 0.9),
-          rgba(25, 5, 8, 0.96)
+          #5d0c11 0%,
+          #260609 48%,
+          #110305 100%
         );
 
       box-shadow:
-        0 0 14px rgba(255, 44, 44, 0.32),
-        inset 0 0 18px rgba(255, 59, 48, 0.08);
+        0 0 18px rgba(255, 55, 45, 0.30);
     }
 
     .du-card {
-      border: 1.5px solid #ffb000;
+      border: 2px solid #ffb000;
+
       background:
-        radial-gradient(
-          circle at 12% 50%,
-          rgba(255, 173, 0, 0.38),
-          transparent 35%
-        ),
         linear-gradient(
           100deg,
-          rgba(77, 48, 0, 0.92),
-          rgba(25, 17, 1, 0.96)
+          #594000 0%,
+          #2c1d00 48%,
+          #120c00 100%
         );
 
       box-shadow:
-        0 0 14px rgba(255, 174, 0, 0.3),
-        inset 0 0 18px rgba(255, 174, 0, 0.08);
+        0 0 18px rgba(255, 174, 0, 0.28);
     }
 
     .notable-card {
-      border: 1.5px solid #00e982;
+      border: 2px solid #00e986;
+
       background:
-        radial-gradient(
-          circle at 12% 50%,
-          rgba(0, 225, 126, 0.34),
-          transparent 35%
-        ),
         linear-gradient(
           100deg,
-          rgba(0, 70, 45, 0.92),
-          rgba(1, 25, 17, 0.96)
+          #005a38 0%,
+          #00301f 48%,
+          #00170f 100%
         );
 
       box-shadow:
-        0 0 14px rgba(0, 236, 132, 0.28),
-        inset 0 0 18px rgba(0, 236, 132, 0.08);
+        0 0 18px rgba(0, 232, 130, 0.25);
     }
 
-    .icon-wrap {
-      position: relative;
-      z-index: 2;
-      width: 70px;
-      height: 70px;
+    .icon-area {
+      width: 76px;
+      min-width: 76px;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -294,100 +246,467 @@
     .alo-icon {
       width: 68px;
       height: 68px;
+
       border-radius: 50%;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      background: white;
-      border: 5px solid #ff2d2d;
+
+      background: #ffffff;
+
+      border: 5px solid #ff3030;
+
       box-shadow:
-        0 0 18px rgba(255, 45, 45, 0.65);
+        0 0 18px rgba(255, 48, 48, 0.55);
     }
 
-    .alo-icon span {
+    .alo-icon-text {
       color: #ed1c24;
+
       font-size: 25px;
       font-weight: 800;
+
       letter-spacing: -1.5px;
     }
 
     .du-icon {
       width: 66px;
       height: 66px;
+
       border-radius: 15px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffab18;
+
+      background: #ffad18;
+
       box-shadow:
-        0 0 18px rgba(255, 171, 24, 0.6);
+        0 0 18px rgba(255, 173, 24, 0.50);
     }
 
-    .checkbox {
+    .check-box {
       position: relative;
+
       width: 42px;
       height: 42px;
-      border: 5px solid white;
+
+      border: 5px solid #ffffff;
+
       border-radius: 7px;
     }
 
-    .checkbox::after {
+    .check-box::after {
       content: "";
+
       position: absolute;
+
       width: 21px;
       height: 11px;
+
       left: 7px;
       top: 7px;
-      border-left: 5px solid white;
-      border-bottom: 5px solid white;
+
+      border-left: 5px solid #ffffff;
+      border-bottom: 5px solid #ffffff;
+
       transform: rotate(-45deg);
     }
 
     .notable-icon {
       width: 66px;
       height: 66px;
+
       border-radius: 14px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       background: #08d878;
+
       box-shadow:
-        0 0 18px rgba(0, 230, 126, 0.55);
+        0 0 18px rgba(0, 225, 125, 0.50);
     }
 
-    .notable-icon span {
-      color: white;
+    .notable-icon-text {
+      color: #ffffff;
+
       font-size: 43px;
       line-height: 1;
+
       font-weight: 900;
     }
 
-    .app-info {
-      position: relative;
-      z-index: 2;
+    .info {
+      flex: 1;
+
       min-width: 0;
+
+      padding-left: 8px;
     }
 
-    .app-name {
-      margin: 0 0 5px;
+    .name {
+      margin: 0 0 6px;
+
+      color: #ffffff;
+
       font-size: 24px;
       line-height: 1;
+
       font-weight: 800;
-      letter-spacing: -0.4px;
     }
 
-    .app-description {
+    .description {
       margin: 0;
-      color: #d3d5d8;
+
+      color: #d5d8dc;
+
       font-size: 14px;
       line-height: 1.25;
     }
 
     .arrow {
-      position: relative;
-      z-index: 2;
+      width: 34px;
+      min-width: 34px;
+
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-size: 40px;
-      font-weight: 200
+      justify-content: center;
+
+      color: #ffffff;
+
+      font-size: 39px;
+      line-height: 1;
+
+      font-weight: 300;
+    }
+
+    .footer {
+      margin-top: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-left: 9px;
+      padding-right: 8px;
+    }
+
+    .slogan {
+      margin: 0;
+
+      color: #5cb7ff;
+
+      font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+      font-size: 27px;
+      font-style: italic;
+
+      transform: rotate(-4deg);
+
+      text-shadow:
+        0 0 9px rgba(0, 139, 255, 0.45);
+    }
+
+    .blue-line {
+      width: 100px;
+      height: 3px;
+
+      margin-top: 3px;
+      margin-left: 30px;
+
+      border-radius: 10px;
+
+      background: #008cff;
+
+      transform: rotate(-6deg);
+
+      box-shadow:
+        0 0 6px rgba(0, 140, 255, 0.70);
+    }
+
+    .share {
+      position: relative;
+
+      width: 56px;
+      height: 56px;
+
+      min-width: 56px;
+
+      border-radius: 50%;
+
+      border: 1px solid #75808d;
+
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .share .dot {
+      position: absolute;
+
+      width: 9px;
+      height: 9px;
+
+      border: 3px solid #ffffff;
+
+      border-radius: 50%;
+
+      background: #07101b;
+    }
+
+    .share .dot1 {
+      top: 10px;
+      right: 10px;
+    }
+
+    .share .dot2 {
+      top: 23px;
+      left: 10px;
+    }
+
+    .share .dot3 {
+      bottom: 9px;
+      right: 10px;
+    }
+
+    .share .line {
+      position: absolute;
+
+      width: 20px;
+      height: 3px;
+
+      left: 18px;
+
+      border-radius: 5px;
+
+      background: #ffffff;
+
+      transform-origin: left center;
+    }
+
+    .share .line1 {
+      top: 25px;
+      transform: rotate(-31deg);
+    }
+
+    .share .line2 {
+      top: 30px;
+      transform: rotate(31deg);
+    }
+
+    @media (max-width: 390px) {
+
+      .container {
+        width: 92%;
+      }
+
+      .title {
+        font-size: 40px;
+      }
+
+      .card {
+        min-height: 105px;
+        padding: 14px;
+      }
+
+      .icon-area {
+        width: 68px;
+        min-width: 68px;
+      }
+
+      .alo-icon {
+        width: 61px;
+        height: 61px;
+      }
+
+      .du-icon,
+      .notable-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .name {
+        font-size: 22px;
+      }
+
+      .description {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="screen">
+
+    <div class="dot-field"></div>
+
+    <div class="fade"></div>
+
+    <div class="container">
+
+      <header class="header">
+
+        <h1 class="title">
+          My Apps
+        </h1>
+
+        <p class="subtitle">
+          Three tools. One place.
+        </p>
+
+      </header>
+
+
+      <div class="cards">
+
+        <a
+          class="card alo-card"
+          href="https://thecfoguy.github.io/alo/"
+        >
+
+          <div class="icon-area">
+
+            <div class="alo-icon">
+
+              <span class="alo-icon-text">
+                Alo
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="info">
+
+            <h2 class="name">
+              Alo
+            </h2>
+
+            <p class="description">
+              Translate words<br>
+              into other languages
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <a
+          class="card du-card"
+          href="https://thecfoguy.github.io/2DU/"
+        >
+
+          <div class="icon-area">
+
+            <div class="du-icon">
+
+              <div class="check-box"></div>
+
+            </div>
+
+          </div>
+
+          <div class="info">
+
+            <h2 class="name">
+              2DU
+            </h2>
+
+            <p class="description">
+              Your to-do list,<br>
+              made simple
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <a
+          class="card notable-card"
+          href="https://thecfoguy.github.io/notable/"
+        >
+
+          <div class="icon-area">
+
+            <div class="notable-icon">
+
+              <span class="notable-icon-text">
+                N
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="info">
+
+            <h2 class="name">
+              Notable
+            </h2>
+
+            <p class="description">
+              Notes, ideas,<br>
+              and reminders
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <div class="footer">
+
+        <div>
+
+          <p class="slogan">
+            Get more done today.
+          </p>
+
+          <div class="blue-line"></div>
+
+        </div>
+
+        <div class="share">
+
+          <span class="dot dot1"></span>
+
+          <span class="dot dot2"></span>
+
+          <span class="dot dot3"></span>
+
+          <span class="line line1"></span>
+
+          <span class="line line2"></span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
